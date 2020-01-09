@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>colors</title>
+	<meta charset="utf-8">  
+	<link rel="shortcut icon" href="../../favicon.ico">
+	<link rel="stylesheet" type="text/css" href="colors.css">
+	<script type="text/javascript" src="colors.js"></script>
+</head>	
+
+<body onload="start_page()">
+<center>
+
+	<br>
+	<div class=hi>Найди клетку с особенным цветом</div>
+	<div class=lowi>попробуй дойти и пройти доску 10х10</div>
+	<br>
+
+	<table align=center width=700>
+		<tr>
+			<td width=20%>
+				<table width=100%>
+					<script type="text/javascript">
+						for (var i=0; i<arr_name.length; i++){
+							document.write('<tr><td class=posName>'+arr_name[i]+'</td><td class=posPos id=td_pos_'+i.toString()+' width=5></td></tr>');
+						}
+					</script>				
+				</table>
+			</td>
+
+			<td>
+				<script>
+					var zagol = window.location.href; // взять заголовок из адресной строки	
+					var param = zagol.split("?")[1]; // разделить на массив по символу ? и взять элемент с индексом 1
+					var paramValue; // размерность таблицы
+					if (typeof param != "undefined"){
+						paramValue = param.split("=")[1]; // взять из заголовка
+					}
+					else{
+						paramValue = '3';
+					}
+					row = parseInt(paramValue);
+					col = parseInt(paramValue);
+					print_table(row, col);
+				</script>
+				<br>
+				<input id = "btnNext" type="button"	class="btn"	onclick=next_page(); />
+				<br>
+				<div class=low id=res1>осталось шагов до Экстрасенса - 100</div>
+				<div class=low id=lblNext>переход к следующему уровню пока закрыт</div>	
+			</td>
+		</tr>
+ 	</table>
+
+</center>
+</body>
+</html>

@@ -1,0 +1,32 @@
+body
+	{background: #aca; font-size: 28px;}
+table.pole
+	{background-color: #aca;}
+td
+	{color: #555; font-family: Tahoma; font-size: 20px; text-align: center;}
+td.posName
+	{color: #333; font-family: Tahoma; font-size: 18px; text-align: right;}
+td.posPos
+	{color: #333; background-color: #aca; font-family: Tahoma; font-size: 18px; text-align: right;}
+
+div{text-align: center;}
+div.hi
+	{color: #274; font-family: Georgia; font-size: 32px;}
+div.low
+	{color: #167; font-family: Georgia; font-size: 22px;}
+div.lowi
+	{font-style: italic; color: #167; font-family: Georgia; font-size: 20px;}
+div.lowOtv
+	{color: #aaa; font-style: bold; font-family: monospace; font-size: 22px;}
+
+input {
+	width: 14em;
+	font-family: 'Comic Sans MS';
+	font-size: 24pt;
+	font-weight: bold;
+	text-align: center;
+}
+input.btn {
+	height: 3em;
+	color: #0000AA;"	
+}
