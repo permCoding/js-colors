@@ -33,7 +33,7 @@ function printColor(posX, posY){
 	d_sdv = 1 + (sdvig-6)/10|0;	if (d_sdv<1) d_sdv = 1;
 	sdvig += ugadal ? -d_sdv: 2*d_sdv;
 	if (sdvig<1) sdvig = 1;	if (sdvig>120) sdvig=120;
-	pos_name = -1; do{} while(sdvig>arr_value[++pos_name]);	
+	pos_name = -1; do{} while(sdvig>arr_value[++pos_name]);
 
 	document.getElementById('pole').style.backgroundColor = ugadal ? '#afa': '#f33';
 	document.getElementById('res1').innerHTML = 'шагов до Экстрасенса - ' + sdvig; // текущий уровень
@@ -61,7 +61,7 @@ function check(s){
 	if (s.length<2) s = '0' + s;
 	return s;
 }
-		
+
 function gen_arr(){
 	napr = 2*Math.random()<1? -1: 1;
 	tmp = 256 - sdvig;
@@ -69,7 +69,7 @@ function gen_arr(){
 		dec = sdvig/2|0 + Math.floor(tmp*Math.random());
 		arr_td[i] = +dec;
 		arr_tx[i] = +dec+napr*(sdvig/2|0);
-	}	
+	}
 }
 
 function gen_color(){
@@ -88,10 +88,10 @@ var print_table = function (row, col){
 	dh = document.body.clientHeight // Высота браузера
 	sw = screen.width // Ширина экрана
 	sh = screen.height // Высота экрана
-	min = (sw<sh)? 2.4*sw: 0.66*sh;	
+	min = (sw<sh)? 2.4*sw: 0.66*sh;
 	valSq = (min*.7)/col|0;
     document.write("<table id=pole class=pole align=center>"); 
-    for (i = 0; i < row; i++) {        
+    for (i = 0; i < row; i++) {       
 		document.write("<tr>");
 		for (j = 0; j < col; j++) {
 			td_num = (j+i*col).toString();
@@ -107,18 +107,17 @@ var print_table = function (row, col){
 
 function next_page(){
 	nextNum = (row + 1).toString(10);
-	document.location = "colors.html?param=" + nextNum;
+	document.location = "index.html?param=" + nextNum;
 }
 
 function start_page(){
 	nextNum = (row + 1).toString(10);
-	var btn = document.getElementById('btnNext');	
+	var btn = document.getElementById('btnNext');
 		btn.value = 'NEXT ' + nextNum + 'x' + nextNum;
 		btn.disabled = true;
 		btn.style.color = '#aaa';
-	document.getElementById('lblNext').innerHTML = 
+	document.getElementById('lblNext').innerHTML =
 		'шагов до следующей доски - ' + (sdvig -(arr_value[3]-row-1)).toString();
-	document.getElementById('td_pos_'+(arr_name.length-1).toString()).style.backgroundColor = '#ded';		
+	document.getElementById('td_pos_'+(arr_name.length-1).toString()).style.backgroundColor = '#ded';
 	fill_table();
 }
-
