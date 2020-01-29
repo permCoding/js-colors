@@ -19,6 +19,8 @@ var color_tx;
 var param;
 var paramValue;
 var widthProgress = 0;
+var colsrows = 3;
+var levelBaf = 10;
 
 function gen_arr(){
 	napr = 2*Math.random()<1? -1: 1;
@@ -58,7 +60,7 @@ row = parseInt(paramValue);
 col = parseInt(paramValue);
 function fill_table(){
 	gen_color();
-	for (var i=0; i<row*col; i++){ // меняем цвет фона ячеек
+	for (var i=0; i<colsrows*colsrows; i++){ // меняем цвет фона ячеек
 		id_num = 'block_' + i.toString();
     $('#'+id_num).css('background-color', (i==pos)? color_tx: color_td)
 		//document.getElementById(id_num).style.backgroundColor = (i==pos)? color_tx: color_td;
@@ -67,14 +69,17 @@ function fill_table(){
 
 function generatedBoard(row, col){
   for (let h =0; h<row*col;h++){
-    $('.game-container .row.board').append('<div class="col s4 block" id="block_'+h+'"></div>')
+    let sBlock = row == 3 ? 4 : row == 4 ? 3 : row == 5 ? 2 : 1; 
+    $('.game-container .row.board').append('<div class="col s'+sBlock+' block" id="block_'+h+'"></div>')
   }
   $('.block').click(function(){
    let colorBlock = rgb2hex($(this).css('background-color'));
    if (colorBlock === color_tx){
-     widthProgress = widthProgress + 10;
+     widthProgress = widthProgress + levelBaf;
      if (widthProgress > 100){
-       $('.game-container .row.board').append('<div class="darkcolor"><h3>Отлично!</h3><a onlick="restart();">Начать сначала</a></div>');
+       $('.game-container .row.board').append('<div class="darkcolor"><h3>Отлично!</h3><a onlick="restart();">Следующий уровень</a></div>');
+       colsrows++;
+       levelBaf = levelBaf -1;
        $('.darkcolor a').click(function(){
          restart();
        });
@@ -82,8 +87,15 @@ function generatedBoard(row, col){
      else {
        $('.progress-bar-width').css('width',widthProgress+'%');
      }
-     fill_table();
+     
    }
+   else {
+    if (widthProgress > levelBaf){
+      widthProgress = widthProgress - levelBaf;
+    }
+    $('.progress-bar-width').css('width',widthProgress+'%');
+   }
+   fill_table();
   });
 }
 
@@ -102,7 +114,7 @@ function hex(x) {
 
 function restart(){
   $('.game-container .row.board').html('');
-  generatedBoard(3,3);
+  generatedBoard(colsrows,colsrows);
   fill_table();
   $('.progress-bar-width').css('width', '0%');
   widthProgress = 0;

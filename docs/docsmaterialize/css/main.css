@@ -39,6 +39,27 @@ background: linear-gradient(to right, #8f94fb, #4e54c8); /* W3C, IE 10+/ Edge, F
   position: relative;
   margin: 5px;
 }
+.row .col.s3.block {
+  width: calc(25% - 10px);
+  display: block;
+  background-color: gray;
+  position: relative;
+  margin: 5px;
+}
+.row .col.s2.block {
+  width: calc(16.6666666667% - 10px);
+  display: block;
+  background-color: gray;
+  position: relative;
+  margin: 5px;
+}
+.row .col.s1.block {
+  width: calc(8.3333333333% - 10px);
+  display: block;
+  background-color: gray;
+  position: relative;
+  margin: 5px;
+}
 .board {
   position: relative;
 }
